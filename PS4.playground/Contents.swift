@@ -22,7 +22,6 @@ Due: Thursday, March 3rd, 2016.
 
 Implement raiseArrayToPower using anyPower. It's a one-liner once you figure out how to use anyPower. When you have it implemented it right, the two Part 1 unit tests will pass.
 */
-
 let oneTwoThree = [1, 2, 3]
 
 func anyPower(n: Int) -> (Int->Int) {
@@ -37,7 +36,7 @@ func anyPower(n: Int) -> (Int->Int) {
 }
 
 func raiseArrayToPower(n: Int, arrayOfInts: [Int]) -> [Int] {
-    return [1, 5] // a meaningless hard-coded implementation for you to replace with an actual implementation
+    return arrayOfInts.map(anyPower(n))
 }
 
 /*:
@@ -45,9 +44,14 @@ func raiseArrayToPower(n: Int, arrayOfInts: [Int]) -> [Int] {
 
 Implement the following function using filter. When you have it implemented right, the two Part 2 unit tests will pass.
 */
+func isEven(value: Int) -> Bool {
+    return value % 2 == 0
+}
 
 func keepOnlyEvenValues(arrayOfInts: [Int]) -> [Int] {
-    return [1, 5] // a meaningless hard-coded implementation for you to replace with an actual implementation
+    return arrayOfInts.filter(isEven)
+    //can also use $0 % 2 == 0 instead of isEven function
+    //but use above for readability!!
 }
 
 /*:
@@ -68,7 +72,10 @@ let thisMonthsRentals = [
 ]
 
 func totalRentalHours(rentals: [CarRental]) -> Double {
-    return 5.0 // a meaningless hard-coded implementation for you to replace with an actual implementation
+    let balance = 0.0
+    var total: Double = 0.0
+    total = thisMonthsRentals.reduce(balance) {total, rentals in total + rentals.hours}
+    return total
 }
 
 import XCTest
